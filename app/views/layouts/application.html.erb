@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog4</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="banner">
+      <h1>My Blogs IV</h1>
+    </div>
+
+    <div id="left-panel">
+      <% if user_signed_in? %>
+        <p>
+          <%= current_user.email %> Logged in.
+        </p>
+        <p>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+        </p>
+      <% else %>
+        <p>
+          Please log in.
+        </p>
+        <% end %>
+    </div>
+
+    <div id="main-panel">
+      <%= yield %>
+    </div>
+
+    <div id="footer">
+      Copyright hlx &cpoy; 2020
+    </div>
+
+  </body>
+</html>

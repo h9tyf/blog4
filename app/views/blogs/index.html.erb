@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<%= my_error_exp if defined? (my_error_exp) %>
+
+<h1>Listing blogs</h1>
+
+  <% @blogs.each do |blog| %>
+    <div>
+      <p>
+    <%= link_to blog.title, blog %>,  Posted 
+    <%= time_ago_in_words blog.created_at %> ago. | 
+    <%= link_to 'Edit', edit_blog_path(blog) %>
+    <%= link_to 'Destroy', blog, method: :delete, data: {confirm: 'Are you sure?' } %>
+    </p>
+    <pre><%= blog.content %></pre>
+  </div>
+  <% end %>
+
+<br>
+
+<%= link_to 'New Blog', new_blog_path %>
